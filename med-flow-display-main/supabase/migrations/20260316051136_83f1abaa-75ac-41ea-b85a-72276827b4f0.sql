@@ -1,0 +1,1 @@
+CREATE POLICY "anon read alerts" ON fall_alerts FOR SELECT USING (TRUE);

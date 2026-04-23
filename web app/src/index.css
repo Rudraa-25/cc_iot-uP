@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0A0F1E;
+  --color-bg-secondary: #111827;
+  --color-bg-card: #1A2235;
+  --color-accent-cyan: #00D4FF;
+  --color-accent-red: #FF4757;
+  --color-accent-green: #00D68F;
+  --color-accent-orange: #FF6B35;
+  --color-accent-yellow: #FFD93D;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #8892A4;
+  --color-border: #1E2D40;
+
+  --font-syne: "Syne", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-text-primary font-dm-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-syne tracking-tight;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card border border-border rounded-2xl transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-accent-cyan/30 shadow-[0_0_20px_rgba(0, 212, 255, 0.1)];
+  }
+
+  .btn-primary {
+    @apply bg-accent-cyan text-bg-primary font-bold py-2 px-6 rounded-lg transition-transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply border border-accent-cyan text-accent-cyan font-bold py-2 px-6 rounded-lg transition-transform hover:bg-accent-cyan/10 hover:scale-105 active:scale-95;
+  }
+
+  .input-field {
+    @apply bg-bg-secondary border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 transition-all;
+  }
+}
+
+/* Animations */
+@keyframes heart-beat {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  25% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  75% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-heart-beat {
+  animation: heart-beat 1s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.2);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
